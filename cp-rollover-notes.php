@@ -50,10 +50,10 @@ function cprn_enable_plugin() {
 	// okay, we're through...
 	
 	// add our javascripts
-	add_action( 'wp_print_scripts', 'cprn_add_javascripts', 20 );
+	add_action( 'wp_enqueue_scripts', 'cprn_add_javascripts', 20 );
 
 	// add our css
-	add_action( 'wp_print_styles', 'cprn_add_css', 20 );
+	add_action( 'wp_enqueue_scripts', 'cprn_add_css', 20 );
 
 }
 
@@ -69,7 +69,7 @@ function cprn_add_javascripts() {
 	
 		'jquery-tooltip', // handle
 		plugins_url( 'assets/js/jquery-tooltip/jquery.tooltip.js', CP_ROLLOVER_FOOTNOTES_FILE ),
-		array('jquery'), // dependencies
+		array( 'jquery' ), // dependencies
 		CP_ROLLOVER_FOOTNOTES_VERSION, // version
 		false // in footer
 		
@@ -80,7 +80,7 @@ function cprn_add_javascripts() {
 	
 		'cprn-tooltip', // handle
 		plugins_url( 'assets/js/cp-rollover-notes.js', CP_ROLLOVER_FOOTNOTES_FILE ),
-		array('jquery-tooltip'), // dependencies
+		array( 'jquery-tooltip' ), // dependencies
 		CP_ROLLOVER_FOOTNOTES_VERSION, // version
 		false // in footer
 		
@@ -98,9 +98,9 @@ function cprn_add_css() {
 	// add our custom css
 	wp_enqueue_style(
 	
-		'cprn-css', // handle
+		'cprn-styles', // handle
 		plugins_url( 'assets/css/cp-rollover-notes.css', CP_ROLLOVER_FOOTNOTES_FILE ),
-		false, // in footer
+		null, // dependencies
 		CP_ROLLOVER_FOOTNOTES_VERSION, // version
 		'screen' // media
 		
